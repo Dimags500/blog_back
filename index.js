@@ -1,5 +1,4 @@
 import express from "express";
-import "./db/mongoose.js";
 import cors from "cors";
 
 import { registerValidator } from "./validators/auth.js";
@@ -16,6 +15,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("server/data/uploads"));
+
+const connectURL = process.env.MONGO_CONNECT;
+mongoose
+  .connect(connectURL)
+  .then(() => console.log("DB connected"))
+  .catch((error) => console.log(error));
 
 app.get("/", (req, res) => {
   res.send("home page ");
