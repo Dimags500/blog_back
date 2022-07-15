@@ -50,7 +50,7 @@ app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
   });
 });
 
-const PORT = process.env.PORT | 3030;
+const PORT = process.env.PORT || 3030;
 app.listen(PORT, (err) => {
   if (err) {
     return console.log(err);
