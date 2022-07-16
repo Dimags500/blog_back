@@ -15,7 +15,7 @@ import * as postController from "./controllers/postController.js";
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/uploads", express.static("server/data/uploads"));
+app.use("/uploads", express.static("/uploads"));
 
 app.get("/", (req, res) => {
   res.send("home page ");
